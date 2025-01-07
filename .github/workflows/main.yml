@@ -46,5 +46,5 @@ jobs:
       run: dotnet pack --configuration Release
     
     - name: Publish the package
-      run: dotnet nuget push '${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/*.nupkg' --source "github"
+      run: dotnet nuget push '${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/*.nupkg' --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
     
