@@ -289,6 +289,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
-TheRisingPhoenix.Mvc/App_Data/Logs/UmbracoTraceLog.LON1494PC.txt
-MovieBrowser.Web/wwwroot/lib/
-MovieBrowser.Web/wwwroot/media/
+
