@@ -20,50 +20,32 @@ jobs:
       contents: read
       packages: read
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
   
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
+        source-url: https://nuget.pkg.github.com/${{ github.actor }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-    - name: Add package source
-      run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.actor }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
-    
     - name: Install dependencies
       run: dotnet restore
-      
+
     - name: Get version
       uses: bbonkr/get-version-action@v1
       id: get_version
       with:
         project: '${{ env.PROJECT_PATH }}/${{ env.PROJECT_FILE }}'
+        
+    - name: Build project
+      run: dotnet build --configuration {{ env.BUILD_CONFIG }}
 
     - name: Build and Pack NuGet package
       run: dotnet pack ${{ env.PROJECT_PATH }}/${{ env.PROJECT_FILE }} -p:Version='${{ steps.get_version.outputs.version }}' -c ${{ env.BUILD_CONFIG }}
-
-    - name: Upload NuGet package to GitHub
-      uses: actions/upload-artifact@v4
-      with:
-        name: nugetPackage
-        path: ${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/ 
-
-  publish:
-    name: Publish
-    needs: package
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-    steps:
-    - name: Download nuget package artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: nugetPackage
-
-    - name: Add package source
-      run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.actor }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
-    
-    - name: Push package to GitHub packages 
-      run: dotnet nuget push nugetPackage/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
+      
+    - name: Publish the package to GPR
+      run: dotnet nuget push bin/{{ env.BUILD_CONFIG }}/*.nupkg
 
     
