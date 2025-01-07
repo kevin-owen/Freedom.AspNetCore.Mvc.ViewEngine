@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net9.0;net8.0;net7.0;net6.0;netcoreapp3.1</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<Company></Company>
+		<Authors>Kevin Owen</Authors>
+		<Copyright>2020 Kevin Owen</Copyright>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageId>Freedom.AspNetCore.Mvc.ViewEngine</PackageId>
+		<RepositoryUrl>https://github.com/vccp/vccp-aspnetcore-mvc-viewengine.git</RepositoryUrl>
+		<Description>Services to render ASP.Net views without a controller context.</Description>
+		<Version>1.0.1</Version>
+		<PackageIconUrl></PackageIconUrl>
+		<AssemblyName>Freedom.AspNetCore.Mvc.ViewEngine</AssemblyName>
+		<RootNamespace>Freedom.AspNetCore.Mvc.ViewEngine</RootNamespace>
+		<Product>Freedom.AspNetCore.Mvc.ViewEngine</Product>
+		<PackageProjectUrl>https://github.com/vccp/vccp-aspnetcore-mvc-viewengine</PackageProjectUrl>
+		<PackageIcon>vccp-logo.png</PackageIcon>
+		<RepositoryType>git</RepositoryType>
+		<AssemblyVersion>1.0.1.0</AssemblyVersion>
+		<FileVersion>1.0.1.0</FileVersion>
+	</PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  
+</Project>

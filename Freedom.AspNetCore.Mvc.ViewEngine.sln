@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Freedom.AspNetCore.Mvc.ViewEngine", "src\Freedom.AspNetCore.Mvc.ViewEngine\Freedom.AspNetCore.Mvc.ViewEngine.csproj", "{BF746E9D-E97A-42E4-AC21-0E0C3BD395D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9B9C6472-E4BE-498C-AEBA-63E1D1DA7258}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{9962F9BE-FF0F-4998-8EC8-CD0AD717935D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{60A5DA38-CC3D-4296-ACB1-F31E25F1EE32}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF746E9D-E97A-42E4-AC21-0E0C3BD395D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF746E9D-E97A-42E4-AC21-0E0C3BD395D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF746E9D-E97A-42E4-AC21-0E0C3BD395D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF746E9D-E97A-42E4-AC21-0E0C3BD395D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF746E9D-E97A-42E4-AC21-0E0C3BD395D0} = {9B9C6472-E4BE-498C-AEBA-63E1D1DA7258}
+	EndGlobalSection
+EndGlobal
