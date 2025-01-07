@@ -39,13 +39,10 @@ jobs:
       with:
         project: '${{ env.PROJECT_PATH }}/${{ env.PROJECT_FILE }}'
         
-    - name: Build project
-      run: dotnet build --configuration {{ env.BUILD_CONFIG }}
-
     - name: Build and Pack NuGet package
       run: dotnet pack ${{ env.PROJECT_PATH }}/${{ env.PROJECT_FILE }} -p:Version='${{ steps.get_version.outputs.version }}' -c ${{ env.BUILD_CONFIG }}
       
-    - name: Publish the package to GPR
+    - name: Publish the package
       run: dotnet nuget push bin/{{ env.BUILD_CONFIG }}/*.nupkg
 
     
