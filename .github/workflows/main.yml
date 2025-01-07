@@ -38,19 +38,13 @@ jobs:
       id: get_version
       with:
         project: '${{ env.PROJECT_PATH }}/${{ env.PROJECT_NAME }}.csproj'
-        
-    # - name: Build and Pack NuGet package
-    #   run: dotnet pack ${{ env.PROJECT_PATH }}/${{ env.PROJECT_NAME }}.csproj -p:Version='${{ steps.get_version.outputs.version }}' -c ${{ env.BUILD_CONFIG }}
-      
+     
     - name: Build
       run: dotnet build --no-restore
 
     - name: Create NuGet package
       run: dotnet pack --configuration Release
-      
-    # - name: Add package source
-    #   run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.actor }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
-
+    
     - name: Publish the package
       run: dotnet nuget push '${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/*.nupkg' --source "github"
     
