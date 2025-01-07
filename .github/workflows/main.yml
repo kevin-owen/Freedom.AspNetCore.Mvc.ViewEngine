@@ -43,7 +43,7 @@ jobs:
       run: dotnet pack ${{ env.PROJECT_PATH }}/${{ env.PROJECT_FILE }} -p:Version='${{ steps.get_version.outputs.version }}' -c ${{ env.BUILD_CONFIG }}
 
     - name: Upload NuGet package to GitHub
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: nugetPackage
         path: ${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/ 
@@ -56,7 +56,7 @@ jobs:
       packages: write
     steps:
     - name: Download nuget package artifact
-      uses: actions/download-artifact@v1.0.0
+      uses: actions/download-artifact@v4
       with:
         name: nugetPackage
 
