@@ -26,9 +26,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
-        source-url: https://nuget.pkg.github.com/${{ github.actor }}/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Add package source
+      run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.actor }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
 
     - name: Install dependencies
       run: dotnet restore
@@ -52,5 +52,5 @@ jobs:
     #   run: dotnet nuget add source https://nuget.pkg.github.com/${{ github.actor }}/index.json --name github --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text
 
     - name: Publish the package
-      run: dotnet nuget push '${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/*.nupkg'
+      run: dotnet nuget push '${{ env.PROJECT_PATH }}/bin/${{ env.BUILD_CONFIG }}/*.nupkg' --source "github"
     
